@@ -1,0 +1,553 @@
+{
+  "qing": [
+    {
+      "pian": "ア",
+      "luoma": "a",
+      "ping": "あ"
+    },
+    {
+      "pian": "イ",
+      "luoma": "i",
+      "ping": "い"
+    },
+    {
+      "pian": "ウ",
+      "luoma": "u",
+      "ping": "う"
+    },
+    {
+      "pian": "エ",
+      "luoma": "e",
+      "ping": "え"
+    },
+    {
+      "pian": "オ",
+      "luoma": "o",
+      "ping": "お"
+    },
+    {
+      "pian": "カ",
+      "luoma": "ka",
+      "ping": "か"
+    },
+    {
+      "pian": "キ",
+      "luoma": "ki",
+      "ping": "き"
+    },
+    {
+      "pian": "ク",
+      "luoma": "ku",
+      "ping": "く"
+    },
+    {
+      "pian": "ケ",
+      "luoma": "ke",
+      "ping": "け"
+    },
+    {
+      "pian": "コ",
+      "luoma": "ko",
+      "ping": "こ"
+    },
+    {
+      "pian": "サ",
+      "luoma": "sa",
+      "ping": "さ"
+    },
+    {
+      "pian": "シ",
+      "luoma": "shi",
+      "ping": "し"
+    },
+    {
+      "pian": "ス",
+      "luoma": "su",
+      "ping": "す"
+    },
+    {
+      "pian": "セ",
+      "luoma": "se",
+      "ping": "せ"
+    },
+    {
+      "pian": "ソ",
+      "luoma": "so",
+      "ping": "そ"
+    },
+    {
+      "pian": "タ",
+      "luoma": "ta",
+      "ping": "た"
+    },
+    {
+      "pian": "チ",
+      "luoma": "chi",
+      "ping": "ち"
+    },
+    {
+      "pian": "ツ",
+      "luoma": "tsu",
+      "ping": "つ"
+    },
+    {
+      "pian": "テ",
+      "luoma": "te",
+      "ping": "て"
+    },
+    {
+      "pian": "ト",
+      "luoma": "to",
+      "ping": "と"
+    },
+    {
+      "pian": "ナ",
+      "luoma": "na",
+      "ping": "な"
+    },
+    {
+      "pian": "ニ",
+      "luoma": "ni",
+      "ping": "に"
+    },
+    {
+      "pian": "ヌ",
+      "luoma": "nu",
+      "ping": "ぬ"
+    },
+    {
+      "pian": "ネ",
+      "luoma": "ne",
+      "ping": "ね"
+    },
+    {
+      "pian": "ノ",
+      "luoma": "no",
+      "ping": "の"
+    },
+    {
+      "pian": "ハ",
+      "luoma": "ha",
+      "ping": "は"
+    },
+    {
+      "pian": "ヒ",
+      "luoma": "hi",
+      "ping": "ひ"
+    },
+    {
+      "pian": "フ",
+      "luoma": "fu",
+      "ping": "ふ"
+    },
+    {
+      "pian": "ヘ",
+      "luoma": "he",
+      "ping": "へ"
+    },
+    {
+      "pian": "ホ",
+      "luoma": "ho",
+      "ping": "ほ"
+    },
+    {
+      "pian": "マ",
+      "luoma": "ma",
+      "ping": "ま"
+    },
+    {
+      "pian": "ミ",
+      "luoma": "mi",
+      "ping": "み"
+    },
+    {
+      "pian": "ム",
+      "luoma": "mu",
+      "ping": "む"
+    },
+    {
+      "pian": "メ",
+      "luoma": "me",
+      "ping": "め"
+    },
+    {
+      "pian": "モ",
+      "luoma": "mo",
+      "ping": "も"
+    },
+    {
+      "pian": "ヤ",
+      "luoma": "ya",
+      "ping": "や"
+    },
+    {
+      "pian": "イ",
+      "luoma": "i",
+      "ping": "い"
+    },
+    {
+      "pian": "ユ",
+      "luoma": "yu",
+      "ping": "ゆ"
+    },
+    {
+      "pian": "エ",
+      "luoma": "e",
+      "ping": "え"
+    },
+    {
+      "pian": "ヨ",
+      "luoma": "yo",
+      "ping": "よ"
+    },
+    {
+      "pian": "ラ",
+      "luoma": "ra",
+      "ping": "ら"
+    },
+    {
+      "pian": "リ",
+      "luoma": "ri",
+      "ping": "り"
+    },
+    {
+      "pian": "ル",
+      "luoma": "ru",
+      "ping": "る"
+    },
+    {
+      "pian": "レ",
+      "luoma": "re",
+      "ping": "れ"
+    },
+    {
+      "pian": "ロ",
+      "luoma": "ro",
+      "ping": "ろ"
+    },
+    {
+      "pian": "ワ",
+      "luoma": "wa",
+      "ping": "わ"
+    },
+    {
+      "pian": "イ",
+      "luoma": "i",
+      "ping": "い"
+    },
+    {
+      "pian": "ウ",
+      "luoma": "u",
+      "ping": "う"
+    },
+    {
+      "pian": "エ",
+      "luoma": "e",
+      "ping": "え"
+    },
+    {
+      "pian": "ヲ",
+      "luoma": "wo",
+      "ping": "を"
+    },
+    {
+      "pian": "ン",
+      "luoma": "n",
+      "ping": "ん"
+    }
+  ],
+  "zhuo": [
+    {
+      "pian": "ガ",
+      "luoma": "ga",
+      "ping": "が"
+    },
+    {
+      "pian": "ギ",
+      "luoma": "gi",
+      "ping": "ぎ"
+    },
+    {
+      "pian": "グ",
+      "luoma": "gu",
+      "ping": "ぐ"
+    },
+    {
+      "pian": "ゲ",
+      "luoma": "ge",
+      "ping": "げ"
+    },
+    {
+      "pian": "ゴ",
+      "luoma": "go",
+      "ping": "ご"
+    },
+    {
+      "pian": "ザ",
+      "luoma": "za",
+      "ping": "ざ"
+    },
+    {
+      "pian": "ジ",
+      "luoma": "ji",
+      "ping": "じ"
+    },
+    {
+      "pian": "ズ",
+      "luoma": "zu",
+      "ping": "ず"
+    },
+    {
+      "pian": "ゼ",
+      "luoma": "ze",
+      "ping": "ぜ"
+    },
+    {
+      "pian": "ゾ",
+      "luoma": "zo",
+      "ping": "ぞ"
+    },
+    {
+      "pian": "ダ",
+      "luoma": "da",
+      "ping": "だ"
+    },
+    {
+      "pian": "ヂ",
+      "luoma": "ji",
+      "ping": "ぢ"
+    },
+    {
+      "pian": "ヅ",
+      "luoma": "zu",
+      "ping": "づ"
+    },
+    {
+      "pian": "デ",
+      "luoma": "de",
+      "ping": "で"
+    },
+    {
+      "pian": "ド",
+      "luoma": "do",
+      "ping": "ど"
+    },
+    {
+      "pian": "バ",
+      "luoma": "ba",
+      "ping": "ば"
+    },
+    {
+      "pian": "ビ",
+      "luoma": "bi",
+      "ping": "び"
+    },
+    {
+      "pian": "ブ",
+      "luoma": "bu",
+      "ping": "ぶ"
+    },
+    {
+      "pian": "ベ",
+      "luoma": "be",
+      "ping": "べ"
+    },
+    {
+      "pian": "ボ",
+      "luoma": "bo",
+      "ping": "ぼ"
+    },
+    {
+      "pian": "パ",
+      "luoma": "pa",
+      "ping": "ぱ"
+    },
+    {
+      "pian": "ピ",
+      "luoma": "pi",
+      "ping": "ぴ"
+    },
+    {
+      "pian": "プ",
+      "luoma": "pu",
+      "ping": "ぷ"
+    },
+    {
+      "pian": "ペ",
+      "luoma": "pe",
+      "ping": "ぺ"
+    },
+    {
+      "pian": "ポ",
+      "luoma": "po",
+      "ping": "ぽ"
+    }
+  ],
+  "ao": [
+    {
+      "pian": "キャ",
+      "luoma": "kya",
+      "ping": "きゃ"
+    },
+    {
+      "pian": "キュ",
+      "luoma": "kyu",
+      "ping": "きゅ"
+    },
+    {
+      "pian": "キョ",
+      "luoma": "kyo",
+      "ping": "きょ"
+    },
+    {
+      "pian": "シャ",
+      "luoma": "sha",
+      "ping": "しゃ"
+    },
+    {
+      "pian": "シュ",
+      "luoma": "shu",
+      "ping": "しゅ"
+    },
+    {
+      "pian": "ショ",
+      "luoma": "sho",
+      "ping": "しょ"
+    },
+    {
+      "pian": "チャ",
+      "luoma": "cha",
+      "ping": "ちゃ"
+    },
+    {
+      "pian": "チュ",
+      "luoma": "chu",
+      "ping": "ちゅ"
+    },
+    {
+      "pian": "チョ",
+      "luoma": "cho",
+      "ping": "ちょ"
+    },
+    {
+      "pian": "ニャ",
+      "luoma": "nya",
+      "ping": "にゃ"
+    },
+    {
+      "pian": "ニュ",
+      "luoma": "nyu",
+      "ping": "にゅ"
+    },
+    {
+      "pian": "ニョ",
+      "luoma": "nyo",
+      "ping": "にょ"
+    },
+    {
+      "pian": "ヒャ",
+      "luoma": "hya",
+      "ping": "ひゃ"
+    },
+    {
+      "pian": "ヒュ",
+      "luoma": "hyu",
+      "ping": "ひゅ"
+    },
+    {
+      "pian": "ヒョ",
+      "luoma": "hyo",
+      "ping": "ひょ"
+    },
+    {
+      "pian": "ミャ",
+      "luoma": "mya",
+      "ping": "みゃ"
+    },
+    {
+      "pian": "ミュ",
+      "luoma": "myu",
+      "ping": "みゅ"
+    },
+    {
+      "pian": "ミョ",
+      "luoma": "myo",
+      "ping": "みょ"
+    },
+    {
+      "pian": "リャ",
+      "luoma": "rya",
+      "ping": "りゃ"
+    },
+    {
+      "pian": "リュ",
+      "luoma": "ryu",
+      "ping": "りゅ"
+    },
+    {
+      "pian": "リョ",
+      "luoma": "ryo",
+      "ping": "りょ"
+    },
+    {
+      "pian": "ギャ",
+      "luoma": "gya",
+      "ping": "ぎゃ"
+    },
+    {
+      "pian": "ギュ",
+      "luoma": "gyu",
+      "ping": "ぎゅ"
+    },
+    {
+      "pian": "ギョ",
+      "luoma": "gyo",
+      "ping": "ぎょ"
+    },
+    {
+      "pian": "ジャ",
+      "luoma": "ja",
+      "ping": "じゃ"
+    },
+    {
+      "pian": "ジュ",
+      "luoma": "ju",
+      "ping": "じゅ"
+    },
+    {
+      "pian": "ジョ",
+      "luoma": "jo",
+      "ping": "じょ"
+    },
+    {
+      "pian": "ビャ",
+      "luoma": "bya",
+      "ping": "びゃ"
+    },
+    {
+      "pian": "ビュ",
+      "luoma": "byu",
+      "ping": "びゅ"
+    },
+    {
+      "pian": "ビョ",
+      "luoma": "byo",
+      "ping": "びょ"
+    },
+    {
+      "pian": "ピャ",
+      "luoma": "pya",
+      "ping": "ぴゃ"
+    },
+    {
+      "pian": "ピュ",
+      "luoma": "pyu",
+      "ping": "ぴゅ"
+    },
+    {
+      "pian": "ピョ",
+      "luoma": "pyo",
+      "ping": "ぴょ"
+    }
+  ]
+}

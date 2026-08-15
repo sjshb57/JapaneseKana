@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">日语五十音</string>
+    <string name="hiragana">平假名</string>
+    <string name="katakana">片假名</string>
+    <string name="play_all">全部播放</string>
+    <string name="splash_subtitle">即使简单，也要努力做的很美</string>
+    <string name="splash_loading">正在准备数据...</string>
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 主色（原版 #0FCE1B 亮绿色） -->
+    <color name="primary">#FF0FCE1B</color>
+    <color name="primary_dark">#FF03AF0B</color>
+
+    <!-- 通用色板（取自原版 colors.xml） -->
+    <color name="white">#FFFFFFFF</color>
+    <color name="gray">#66E7E7E7</color>          <!-- 半透明灰：GridView 页面背景 -->
+    <color name="text1">#FF333333</color>         <!-- 深文字：假名 + 罗马音 -->
+    <color name="text2">#FF8E8E8E</color>         <!-- 次级文字：行/列标题 -->
+    <color name="text_disabled">#FFCBCBCB</color> <!-- 不存在发音的文字 -->
+
+    <!-- Splash 米白背景 -->
+    <color name="bg_spash">#FFFDFEFA</color>
+
+    <!-- Tab 未选文字 -->
+    <color name="tab_text_normal">#FF999999</color>
+</resources>

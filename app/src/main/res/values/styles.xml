@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/primary</item>
+        <item name="android:windowBackground">@color/white</item>
+        <!-- edge-to-edge：状态栏透明，由 toolbar 颜色透出来；图标用深色（false=亮图标） -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/bg_spash</item>
+        <item name="colorPrimaryDark">@color/bg_spash</item>
+        <item name="colorAccent">@color/bg_spash</item>
+        <item name="android:windowBackground">@color/bg_spash</item>
+        <item name="android:statusBarColor">@color/bg_spash</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>
