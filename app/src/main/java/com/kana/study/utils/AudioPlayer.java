@@ -2,6 +2,9 @@ package com.kana.study.utils;
 
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
+import android.media.AudioAttributes;
+import android.media.AudioFocusRequest;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 
 /**
@@ -15,10 +18,15 @@ public class AudioPlayer {
     private static AudioPlayer instance;
 
     private Context appContext;
+    private AudioManager audioManager;
+    private AudioFocusRequest focusRequest;
+    private boolean hasFocus = false;
+
     private MediaPlayer mp;
     private String[] queue;
     private int index = -1;
     private boolean prepared = false;
+    private boolean playing = false;
 
     public static synchronized AudioPlayer get() {
         if (instance == null) instance = new AudioPlayer();
@@ -27,6 +35,7 @@ public class AudioPlayer {
 
     public void init(Context ctx) {
         this.appContext = ctx.getApplicationContext();
+        this.audioManager = (AudioManager) appContext.getSystemService(Context.AUDIO_SERVICE);
     }
 
     public void setQueue(String[] romajiList) {
@@ -35,7 +44,9 @@ public class AudioPlayer {
 
     /** 从队列开头开始播 */
     public void play() {
+        playing = true;
         index = 0;
+        requestFocus();
         playCurrent();
     }
 
@@ -47,7 +58,9 @@ public class AudioPlayer {
 
     private void playCurrent() {
         if (queue == null || index < 0 || index >= queue.length) {
+            playing = false;
             release();
+            abandonFocus();
             return;
         }
         release();
@@ -57,6 +70,7 @@ public class AudioPlayer {
             mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
             afd.close();
             mp.setOnPreparedListener(player -> {
+                if (!playing) return;
                 prepared = true;
                 player.start();
             });
@@ -68,9 +82,31 @@ public class AudioPlayer {
     }
 
     public void stop() {
-        if (mp != null && prepared) {
-            try { mp.stop(); } catch (Exception ignored) {}
+        playing = false;
+        index = -1;
+        release();
+        abandonFocus();
+    }
+
+    private void requestFocus() {
+        if (audioManager == null || hasFocus) return;
+        if (focusRequest == null) {
+            focusRequest = new AudioFocusRequest.Builder(
+                    AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK)
+                    .setAudioAttributes(new AudioAttributes.Builder()
+                            .setUsage(AudioAttributes.USAGE_MEDIA)
+                            .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
+                            .build())
+                    .build();
         }
+        hasFocus = audioManager.requestAudioFocus(focusRequest)
+                == AudioManager.AUDIOFOCUS_REQUEST_GRANTED;
+    }
+
+    private void abandonFocus() {
+        if (audioManager == null || !hasFocus) return;
+        audioManager.abandonAudioFocusRequest(focusRequest);
+        hasFocus = false;
     }
 
     public void release() {

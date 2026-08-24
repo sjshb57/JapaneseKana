@@ -19,9 +19,6 @@ import androidx.viewpager.widget.ViewPager;
 import com.kana.study.R;
 import com.kana.study.view.SimpleTabStrip;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 五十音图主页（对应原版 k.java）
  *   - 顶部 title_bar（48dp 内容 + 自适应状态栏高度）
@@ -30,9 +27,10 @@ import java.util.List;
  */
 public class KanaMainFragment extends Fragment {
 
+    private static final String STATE_KATAKANA = "show_katakana";
+
     private boolean showKatakana = false;
     private TextView btnHiragana, btnKatakana;
-    private TabPagerAdapter pagerAdapter;
 
     @Nullable @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -40,11 +38,15 @@ public class KanaMainFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_kana_main, container, false);
 
+        if (savedInstanceState != null) {
+            showKatakana = savedInstanceState.getBoolean(STATE_KATAKANA, false);
+        }
+
         View titleBar = root.findViewById(R.id.title_bar);
         ViewCompat.setOnApplyWindowInsetsListener(titleBar, (v, insets) -> {
             int top = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top;
             v.setPadding(0, top, 0, 0);
-            return WindowInsetsCompat.CONSUMED;
+            return insets;
         });
 
         ViewPager pager = root.findViewById(R.id.kana_pager);
@@ -52,14 +54,13 @@ public class KanaMainFragment extends Fragment {
         btnHiragana = root.findViewById(R.id.switch_left);
         btnKatakana = root.findViewById(R.id.switch_right);
 
-        pagerAdapter = new TabPagerAdapter(getChildFragmentManager());
-        pagerAdapter.add(KanaGridFragment.newInstance(0));
-        pagerAdapter.add(KanaGridFragment.newInstance(1));
-        pagerAdapter.add(KanaGridFragment.newInstance(2));
-        pager.setAdapter(pagerAdapter);
+        pager.setAdapter(new TabPagerAdapter(getChildFragmentManager()));
         pager.setOffscreenPageLimit(2);
 
-        tabStrip.setupWithViewPager(pager, new String[]{"清音", "浊音", "拗音"});
+        tabStrip.setupWithViewPager(pager, new String[]{
+                getString(R.string.tab_qing),
+                getString(R.string.tab_zhuo),
+                getString(R.string.tab_ao)});
 
         btnHiragana.setOnClickListener(v -> setKanaType(false));
         btnKatakana.setOnClickListener(v -> setKanaType(true));
@@ -68,14 +69,17 @@ public class KanaMainFragment extends Fragment {
         return root;
     }
 
+    public boolean isShowKatakana() {
+        return showKatakana;
+    }
+
     private void setKanaType(boolean katakana) {
         if (showKatakana == katakana) return;
         showKatakana = katakana;
         updateSwitchUI();
-        for (int i = 0; i < pagerAdapter.getCount(); i++) {
-            Fragment f = pagerAdapter.getFragment(i);
-            if (f instanceof KanaGridFragment) {
-                ((KanaGridFragment) f).setShowKatakana(showKatakana);
+        for (Fragment f : getChildFragmentManager().getFragments()) {
+            if (f instanceof KanaGridFragment grid) {
+                grid.setShowKatakana(showKatakana);
             }
         }
     }
@@ -96,15 +100,19 @@ public class KanaMainFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(STATE_KATAKANA, showKatakana);
+    }
+
+    @SuppressWarnings("deprecation")
     static class TabPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> list = new ArrayList<>();
         TabPagerAdapter(FragmentManager fm) {
             super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         }
-        void add(Fragment f) { list.add(f); }
-        Fragment getFragment(int pos) { return list.get(pos); }
         @NonNull
-        @Override public Fragment getItem(int pos) { return list.get(pos); }
-        @Override public int getCount() { return list.size(); }
+        @Override public Fragment getItem(int pos) { return KanaGridFragment.newInstance(pos); }
+        @Override public int getCount() { return 3; }
     }
 }

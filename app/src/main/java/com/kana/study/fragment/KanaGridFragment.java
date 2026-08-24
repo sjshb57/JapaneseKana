@@ -8,6 +8,8 @@ import android.widget.GridView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
 import com.kana.study.R;
@@ -26,6 +28,7 @@ public class KanaGridFragment extends Fragment {
     private static final String ARG_TYPE = "type"; // 0=清音, 1=浊音, 2=拗音
 
     private KanaTableAdapter adapter;
+    private boolean showKatakana = false;
 
     public static KanaGridFragment newInstance(int type) {
         KanaGridFragment f = new KanaGridFragment();
@@ -40,6 +43,10 @@ public class KanaGridFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_kana_grid, container, false);
+
+        if (getParentFragment() instanceof KanaMainFragment parent) {
+            showKatakana = parent.isShowKatakana();
+        }
 
         Bundle args = getArguments();
         int kanaType = args != null ? args.getInt(ARG_TYPE, 0) : 0;
@@ -63,8 +70,17 @@ public class KanaGridFragment extends Fragment {
 
         GridView gv = root.findViewById(R.id.grid);
         gv.setNumColumns(columns);
-        adapter = new KanaTableAdapter(requireContext(), data);
+        adapter = new KanaTableAdapter(data);
+        adapter.setShowKatakana(showKatakana);
         gv.setAdapter(adapter);
+
+        final int basePadding = gv.getPaddingBottom();
+        ViewCompat.setOnApplyWindowInsetsListener(gv, (v, insets) -> {
+            int bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom;
+            v.setPadding(v.getPaddingLeft(), v.getPaddingTop(), v.getPaddingRight(),
+                    basePadding + bottom);
+            return insets;
+        });
 
         gv.setOnItemClickListener((parent, view, pos, id) -> {
             GridItem item = data.get(pos);
@@ -86,6 +102,7 @@ public class KanaGridFragment extends Fragment {
 
     /** 由父 Fragment 调用，切换平/片假名显示 */
     public void setShowKatakana(boolean show) {
+        showKatakana = show;
         if (adapter != null) adapter.setShowKatakana(show);
     }
 
