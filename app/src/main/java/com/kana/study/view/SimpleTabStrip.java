@@ -26,7 +26,7 @@ import com.kana.study.R;
  *   - 底部 3dp 绿色短横线，宽度 = 文字宽度，跟随当前 page 平滑移动
  *   - 无下划线、无分隔条
  */
-public class SimpleTabStrip extends LinearLayout {
+public final class SimpleTabStrip extends LinearLayout {
 
     private ViewPager viewPager;
     private int currentPosition = 0;

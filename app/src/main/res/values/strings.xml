@@ -5,5 +5,8 @@
     <string name="katakana">片假名</string>
     <string name="play_all">全部播放</string>
     <string name="splash_subtitle">即使简单，也要努力做的很美</string>
-    <string name="splash_loading">正在准备数据...</string>
+    <string name="splash_loading">正在准备数据…</string>
+    <string name="tab_qing">清音</string>
+    <string name="tab_zhuo">浊音</string>
+    <string name="tab_ao">拗音</string>
 </resources>

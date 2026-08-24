@@ -1,6 +1,5 @@
 package com.kana.study.adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,12 +27,10 @@ public class KanaTableAdapter extends BaseAdapter {
     private static final int TYPE_HEADER = 1;
     private static final int TYPE_CELL   = 2;
 
-    private final Context ctx;
     private final List<GridItem> data;
     private boolean showKatakana = false;
 
-    public KanaTableAdapter(Context ctx, List<GridItem> data) {
-        this.ctx = ctx;
+    public KanaTableAdapter(List<GridItem> data) {
         this.data = data;
     }
 
@@ -62,7 +59,7 @@ public class KanaTableAdapter extends BaseAdapter {
 
     private View getAllView(View v, ViewGroup parent) {
         if (v == null) {
-            v = LayoutInflater.from(ctx).inflate(R.layout.item_grid_all, parent, false);
+            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_grid_all, parent, false);
         }
         return v;
     }
@@ -70,7 +67,7 @@ public class KanaTableAdapter extends BaseAdapter {
     private View getHeaderView(int pos, View v, ViewGroup parent) {
         HeaderHolder h;
         if (v == null) {
-            v = LayoutInflater.from(ctx).inflate(R.layout.item_grid_header, parent, false);
+            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_grid_header, parent, false);
             h = new HeaderHolder();
             h.tv = v.findViewById(R.id.tv_title);
             v.setTag(h);
@@ -84,7 +81,7 @@ public class KanaTableAdapter extends BaseAdapter {
     private View getCellView(int pos, View v, ViewGroup parent) {
         CellHolder h;
         if (v == null) {
-            v = LayoutInflater.from(ctx).inflate(R.layout.item_grid_cell, parent, false);
+            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_grid_cell, parent, false);
             h = new CellHolder();
             h.kana   = v.findViewById(R.id.tv_kana);
             h.romaji = v.findViewById(R.id.tv_romaji);
@@ -95,12 +92,12 @@ public class KanaTableAdapter extends BaseAdapter {
         GridItem item = data.get(pos);
         if (item.enabled) {
             v.setBackgroundResource(R.drawable.bg_grid_cell);
-            int c = ContextCompat.getColor(ctx, R.color.text1);
+            int c = ContextCompat.getColor(parent.getContext(), R.color.text1);
             h.kana.setTextColor(c);
             h.romaji.setTextColor(c);
         } else {
             v.setBackgroundResource(R.drawable.bg_grid_cell_disabled);
-            int c = ContextCompat.getColor(ctx, R.color.text_disabled);
+            int c = ContextCompat.getColor(parent.getContext(), R.color.text_disabled);
             h.kana.setTextColor(c);
             h.romaji.setTextColor(c);
         }
