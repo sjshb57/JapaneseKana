@@ -53,7 +53,7 @@ public class KanaTableAdapter extends BaseAdapter {
             case TYPE_ALL -> getAllView(convertView, parent);
             case TYPE_HEADER -> getHeaderView(pos, convertView, parent);
             case TYPE_CELL -> getCellView(pos, convertView, parent);
-            default -> convertView;
+            default -> throw new IllegalStateException("未知 view type: " + getItemViewType(pos));
         };
     }
 
@@ -101,10 +101,8 @@ public class KanaTableAdapter extends BaseAdapter {
             h.kana.setTextColor(c);
             h.romaji.setTextColor(c);
         }
-        if (item.kana != null) {
-            h.kana.setText(showKatakana ? item.kana.katakana() : item.kana.hiragana());
-            h.romaji.setText(item.kana.romaji());
-        }
+        h.kana.setText(showKatakana ? item.kana.katakana() : item.kana.hiragana());
+        h.romaji.setText(item.kana.romaji());
         return v;
     }
 

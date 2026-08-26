@@ -48,10 +48,9 @@ public class KanaGridFragment extends Fragment {
             showKatakana = parent.isShowKatakana();
         }
 
-        Bundle args = getArguments();
-        int kanaType = args != null ? args.getInt(ARG_TYPE, 0) : 0;
+        int kanaType = requireArguments().getInt(ARG_TYPE);
 
-        KanaData d = KanaData.get();
+        KanaData d = KanaData.get(requireContext());
         List<GridItem> data;
         int columns = switch (kanaType) {
             case 1 -> {
@@ -85,13 +84,11 @@ public class KanaGridFragment extends Fragment {
         gv.setOnItemClickListener((parent, view, pos, id) -> {
             GridItem item = data.get(pos);
             if (!item.enabled) return;
-            AudioPlayer player = AudioPlayer.get();
+            AudioPlayer player = AudioPlayer.get(requireContext());
             if (item.type == 2 && item.kana != null) {
-                // 单个假名
                 player.setQueue(new String[]{item.kana.romaji()});
                 player.play();
             } else if (item.romajiList != null && item.romajiList.length > 0) {
-                // 全部播放头 / 行标题 / 列标题：批量播放
                 player.setQueue(item.romajiList);
                 player.play();
             }
@@ -108,6 +105,6 @@ public class KanaGridFragment extends Fragment {
 
     @Override public void onPause() {
         super.onPause();
-        AudioPlayer.get().stop();
+        AudioPlayer.get(requireContext()).stop();
     }
 }

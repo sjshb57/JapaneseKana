@@ -37,28 +37,28 @@
                     android:id="@+id/switch_left"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_switch_left_selected"
+                    android:background="@drawable/bg_switch_left"
                     android:gravity="center"
                     android:paddingStart="8dp"
                     android:paddingTop="5dp"
                     android:paddingEnd="8dp"
                     android:paddingBottom="5dp"
                     android:text="@string/hiragana"
-                    android:textColor="@color/primary"
+                    android:textColor="@color/switch_text"
                     android:textSize="12sp"/>
 
                 <TextView
                     android:id="@+id/switch_right"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_switch_right_normal"
+                    android:background="@drawable/bg_switch_right"
                     android:gravity="center"
                     android:paddingStart="8dp"
                     android:paddingTop="5dp"
                     android:paddingEnd="8dp"
                     android:paddingBottom="5dp"
                     android:text="@string/katakana"
-                    android:textColor="@color/white"
+                    android:textColor="@color/switch_text"
                     android:textSize="12sp"/>
             </LinearLayout>
         </RelativeLayout>

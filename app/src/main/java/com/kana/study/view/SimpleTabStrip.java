@@ -77,18 +77,14 @@ public final class SimpleTabStrip extends LinearLayout {
         tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
         tv.setTextColor(colorTextNormal);
         tv.setSingleLine(true);
-        tv.setOnClickListener(v -> {
-            if (viewPager != null) viewPager.setCurrentItem(index);
-        });
+        tv.setOnClickListener(v -> viewPager.setCurrentItem(index));
         addView(tv, new LayoutParams(0, LayoutParams.MATCH_PARENT, 1f));
     }
 
     private void updateTextColors(int selectedPos) {
         for (int i = 0; i < getChildCount(); i++) {
-            View v = getChildAt(i);
-            if (v instanceof TextView) {
-                ((TextView) v).setTextColor(i == selectedPos ? colorTextSelected : colorTextNormal);
-            }
+            ((TextView) getChildAt(i)).setTextColor(
+                    i == selectedPos ? colorTextSelected : colorTextNormal);
         }
         currentPosition = selectedPos;
         currentOffset = 0f;
@@ -103,7 +99,6 @@ public final class SimpleTabStrip extends LinearLayout {
 
         int h = getHeight();
 
-        // 短横线指示器：长度 = 文字宽度，跟当前 tab 居中
         float[] curRange = textRange(getChildAt(currentPosition));
         float left  = curRange[0];
         float right = curRange[1];
@@ -117,14 +112,11 @@ public final class SimpleTabStrip extends LinearLayout {
         canvas.drawRect(left, h - indicatorHeightPx, right, h, indicatorPaint);
     }
 
-    /** 返回 tab 内文字的左右绝对坐标（在父 TabStrip 坐标系内） */
+    /** 返回 tab 内文字的左右绝对坐标（在父 TabStrip 坐标系内）；子 View 全是 addTab() 造的 TextView */
     private float[] textRange(View tabView) {
-        if (!(tabView instanceof TextView tv)) {
-            return new float[]{tabView.getLeft(), tabView.getRight()};
-        }
-        float textWidth = tv.getPaint().measureText(tv.getText().toString());
-        float pad = (tv.getWidth() - textWidth) / 2f;
-        return new float[]{tabView.getLeft() + pad, tabView.getRight() - pad};
+        TextView tv = (TextView) tabView;
+        float pad = (tv.getWidth() - tv.getPaint().measureText(tv.getText().toString())) / 2f;
+        return new float[]{tv.getLeft() + pad, tv.getRight() - pad};
     }
 
     private int dp() {

@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
@@ -85,19 +84,8 @@ public class KanaMainFragment extends Fragment {
     }
 
     private void updateSwitchUI() {
-        int primary = ContextCompat.getColor(requireContext(), R.color.primary);
-        int white   = ContextCompat.getColor(requireContext(), R.color.white);
-        if (!showKatakana) {
-            btnHiragana.setBackgroundResource(R.drawable.bg_switch_left_selected);
-            btnHiragana.setTextColor(primary);
-            btnKatakana.setBackgroundResource(R.drawable.bg_switch_right_normal);
-            btnKatakana.setTextColor(white);
-        } else {
-            btnHiragana.setBackgroundResource(R.drawable.bg_switch_left_normal);
-            btnHiragana.setTextColor(white);
-            btnKatakana.setBackgroundResource(R.drawable.bg_switch_right_selected);
-            btnKatakana.setTextColor(primary);
-        }
+        btnHiragana.setSelected(!showKatakana);
+        btnKatakana.setSelected(showKatakana);
     }
 
     @Override
