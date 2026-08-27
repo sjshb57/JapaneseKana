@@ -72,8 +72,6 @@ public class KanaData {
         return list;
     }
 
-    // ------------------------------------------------------------------ 三张表
-
     /** 清音：6 列（行标题 + 5 个假名） */
     public List<GridItem> buildQingTable() {
         List<List<Kana>> rows = rows(qing, 5);
@@ -99,8 +97,6 @@ public class KanaData {
                 z.get(0).get(0), z.get(1).get(0), z.get(3).get(0), z.get(4).get(0));
         return build(rows(ao, 3), colLabels, rowLabels);
     }
-
-    // ------------------------------------------------------------------ 通用排版
 
     /** 把一维假名表按 width 切成若干行，最后一行可以不满（清音的 ん 就是单独一行） */
     private static List<List<Kana>> rows(List<Kana> data, int width) {

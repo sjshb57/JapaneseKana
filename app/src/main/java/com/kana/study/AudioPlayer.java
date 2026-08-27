@@ -12,8 +12,7 @@ import java.io.IOException;
 /**
  * 顺序播放队列。
  * <p>
- * setQueue(romajiList) 设队列，play() 从头顺序播放，每个播完自动播下一个。
- * 复用同一个 MediaPlayer（reset 而不是 new/release），只在 stop() 时真正释放。
+ * play(romajiList) 从头顺序播放，每个播完自动播下一个。
  */
 public class AudioPlayer {
 
@@ -39,12 +38,8 @@ public class AudioPlayer {
         this.audioManager = appContext.getSystemService(AudioManager.class);
     }
 
-    public void setQueue(String[] romajiList) {
-        this.queue = romajiList;
-    }
-
-    /** 从队列开头开始播 */
-    public void play() {
+    public void play(String[] romajiList) {
+        queue = romajiList;
         playing = true;
         index = 0;
         requestFocus();
@@ -62,9 +57,10 @@ public class AudioPlayer {
             abandonFocus();
             return;
         }
+        String name = queue[index] + ".mp3";
         MediaPlayer player = player();
         player.reset();
-        try (AssetFileDescriptor afd = appContext.getAssets().openFd(queue[index] + ".mp3")) {
+        try (AssetFileDescriptor afd = appContext.getAssets().openFd(name)) {
             player.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
         } catch (IOException e) {
             throw new IllegalStateException("缺少音频 assets/" + queue[index] + ".mp3", e);

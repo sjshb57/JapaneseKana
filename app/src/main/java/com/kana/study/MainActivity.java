@@ -141,11 +141,9 @@ public class MainActivity extends AppCompatActivity {
             grid.setOnItemClickListener((parent, view, pos, id) -> {
                 GridItem item = items.get(pos);
                 if (!item.enabled) return;
-                AudioPlayer player = AudioPlayer.get(MainActivity.this);
-                player.setQueue(item.type == GridItem.TYPE_CELL
+                AudioPlayer.get(MainActivity.this).play(item.type == GridItem.TYPE_CELL
                         ? new String[]{item.kana.romaji()}
                         : item.romaji);
-                player.play();
             });
 
             container.addView(page);
