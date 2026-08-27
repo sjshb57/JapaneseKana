@@ -13,7 +13,7 @@
         android:layout_height="96dp"
         android:layout_marginTop="64dp"
         android:layout_centerHorizontal="true"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/ic_launcher"
         android:contentDescription="@string/app_name"/>
 
     <TextView
