@@ -1,4 +1,4 @@
-package com.kana.study.adapter;
+package com.kana.study.ui;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,26 +9,17 @@ import android.widget.TextView;
 import androidx.core.content.ContextCompat;
 
 import com.kana.study.R;
-import com.kana.study.model.GridItem;
+import com.kana.study.data.GridItem;
 
 import java.util.List;
 
 /**
- * 五十音表 GridView 适配器（对照原版 g.java）
- * <p>
- * 三种 view type：
- *   0 = 全部播放头（ImageView 播放图标）
- *   1 = 行/列标题（单行 18sp 灰字）
- *   2 = 假名格子（假名 20sp + 罗马音 14sp，深色文字）
+ * 五十音表 GridView 适配器，三种 view type 见 {@link GridItem}。
  */
 public class KanaTableAdapter extends BaseAdapter {
 
-    private static final int TYPE_ALL    = 0;
-    private static final int TYPE_HEADER = 1;
-    private static final int TYPE_CELL   = 2;
-
     private final List<GridItem> data;
-    private boolean showKatakana = false;
+    private boolean showKatakana;
 
     public KanaTableAdapter(List<GridItem> data) {
         this.data = data;
@@ -50,38 +41,36 @@ public class KanaTableAdapter extends BaseAdapter {
     @Override
     public View getView(int pos, View convertView, ViewGroup parent) {
         return switch (getItemViewType(pos)) {
-            case TYPE_ALL -> getAllView(convertView, parent);
-            case TYPE_HEADER -> getHeaderView(pos, convertView, parent);
-            case TYPE_CELL -> getCellView(pos, convertView, parent);
+            case GridItem.TYPE_ALL -> inflate(convertView, parent, R.layout.item_grid_all);
+            case GridItem.TYPE_HEADER -> getHeaderView(pos, convertView, parent);
+            case GridItem.TYPE_CELL -> getCellView(pos, convertView, parent);
             default -> throw new IllegalStateException("未知 view type: " + getItemViewType(pos));
         };
     }
 
-    private View getAllView(View v, ViewGroup parent) {
-        if (v == null) {
-            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_grid_all, parent, false);
-        }
-        return v;
+    private static View inflate(View convertView, ViewGroup parent, int layout) {
+        return convertView != null ? convertView
+                : LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
     }
 
     private View getHeaderView(int pos, View v, ViewGroup parent) {
         HeaderHolder h;
         if (v == null) {
-            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_grid_header, parent, false);
+            v = inflate(null, parent, R.layout.item_grid_header);
             h = new HeaderHolder();
             h.tv = v.findViewById(R.id.tv_title);
             v.setTag(h);
         } else {
             h = (HeaderHolder) v.getTag();
         }
-        h.tv.setText(data.get(pos).title);
+        h.tv.setText(data.get(pos).title(showKatakana));
         return v;
     }
 
     private View getCellView(int pos, View v, ViewGroup parent) {
         CellHolder h;
         if (v == null) {
-            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_grid_cell, parent, false);
+            v = inflate(null, parent, R.layout.item_grid_cell);
             h = new CellHolder();
             h.kana   = v.findViewById(R.id.tv_kana);
             h.romaji = v.findViewById(R.id.tv_romaji);
@@ -90,17 +79,12 @@ public class KanaTableAdapter extends BaseAdapter {
             h = (CellHolder) v.getTag();
         }
         GridItem item = data.get(pos);
-        if (item.enabled) {
-            v.setBackgroundResource(R.drawable.bg_grid_cell);
-            int c = ContextCompat.getColor(parent.getContext(), R.color.text1);
-            h.kana.setTextColor(c);
-            h.romaji.setTextColor(c);
-        } else {
-            v.setBackgroundResource(R.drawable.bg_grid_cell_disabled);
-            int c = ContextCompat.getColor(parent.getContext(), R.color.text_disabled);
-            h.kana.setTextColor(c);
-            h.romaji.setTextColor(c);
-        }
+        v.setBackgroundResource(item.enabled
+                ? R.drawable.bg_grid_cell : R.drawable.bg_grid_cell_disabled);
+        int color = ContextCompat.getColor(parent.getContext(),
+                item.enabled ? R.color.text1 : R.color.text_disabled);
+        h.kana.setTextColor(color);
+        h.romaji.setTextColor(color);
         h.kana.setText(showKatakana ? item.kana.katakana() : item.kana.hiragana());
         h.romaji.setText(item.kana.romaji());
         return v;

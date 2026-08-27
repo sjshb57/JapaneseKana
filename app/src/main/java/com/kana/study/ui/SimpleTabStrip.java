@@ -1,4 +1,4 @@
-package com.kana.study.view;
+package com.kana.study.ui;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -15,6 +15,7 @@ import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import com.kana.study.R;
+
 
 /**
  * 顶部 Tab 控件（对应原版 PagerSlidingTabStrip 的简化实现）。
@@ -44,14 +45,12 @@ public final class SimpleTabStrip extends LinearLayout {
         setOrientation(HORIZONTAL);
         setWillNotDraw(false);
 
-        indicatorHeightPx = dp();
+        indicatorHeightPx = Math.round(3 * getResources().getDisplayMetrics().density);
 
         colorTextNormal   = ContextCompat.getColor(ctx, R.color.tab_text_normal);
         colorTextSelected = ContextCompat.getColor(ctx, R.color.primary);
 
         indicatorPaint.setColor(colorTextSelected);
-        indicatorPaint.setStyle(Paint.Style.FILL);
-        indicatorPaint.setAntiAlias(true);
     }
 
     public void setupWithViewPager(@NonNull ViewPager vp, String[] titles) {
@@ -117,9 +116,5 @@ public final class SimpleTabStrip extends LinearLayout {
         TextView tv = (TextView) tabView;
         float pad = (tv.getWidth() - tv.getPaint().measureText(tv.getText().toString())) / 2f;
         return new float[]{tv.getLeft() + pad, tv.getRight() - pad};
-    }
-
-    private int dp() {
-        return (int) (3 * getResources().getDisplayMetrics().density + 0.5f);
     }
 }

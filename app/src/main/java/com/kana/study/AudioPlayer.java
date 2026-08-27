@@ -1,4 +1,4 @@
-package com.kana.study.utils;
+package com.kana.study;
 
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
