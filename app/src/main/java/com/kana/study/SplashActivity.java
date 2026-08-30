@@ -1,23 +1,22 @@
 package com.kana.study;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.window.OnBackInvokedDispatcher;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
-import androidx.activity.ComponentActivity;
+import androidx.annotation.RequiresApi;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-/**
- * 启动屏：1200ms 后跳 MainActivity，期间屏蔽返回键
- * （OnBackPressedCallback 方式，兼容 Android 14+ 的 predictive back）。
- */
+/** 启动屏：1200ms 后跳 MainActivity，期间屏蔽返回键 */
 @SuppressLint("CustomSplashScreen")
-public class SplashActivity extends ComponentActivity {
+public class SplashActivity extends Activity {
 
     private static final long SPLASH_DURATION_MS = 1200L;
 
@@ -40,10 +39,9 @@ public class SplashActivity extends ComponentActivity {
             return WindowInsetsCompat.CONSUMED;
         });
 
-        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
-            @Override public void handleOnBackPressed() {
-            }
-        });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            BackBlocker.install(this);
+        }
     }
 
     @Override
@@ -56,5 +54,23 @@ public class SplashActivity extends ComponentActivity {
     protected void onPause() {
         super.onPause();
         root.removeCallbacks(jump);
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
+    @SuppressLint("GestureBackNavigation")
+    public void onBackPressed() {
+    }
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private static final class BackBlocker {
+        private BackBlocker() {
+        }
+
+        static void install(Activity activity) {
+            activity.getOnBackInvokedDispatcher().registerOnBackInvokedCallback(
+                    OnBackInvokedDispatcher.PRIORITY_DEFAULT, () -> {
+                    });
+        }
     }
 }

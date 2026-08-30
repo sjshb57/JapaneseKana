@@ -102,7 +102,8 @@ public class AudioPlayer {
                             .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
                             .build())
                     .setOnAudioFocusChangeListener(change -> {
-                        if (change == AudioManager.AUDIOFOCUS_LOSS) stop();
+                        if (change == AudioManager.AUDIOFOCUS_LOSS
+                                || change == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT) stop();
                     })
                     .build();
         }

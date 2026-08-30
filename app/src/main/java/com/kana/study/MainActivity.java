@@ -1,5 +1,6 @@
 package com.kana.study;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +10,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.activity.ComponentActivity;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.viewpager.widget.PagerAdapter;
@@ -26,7 +26,7 @@ import java.util.List;
  * 主界面：顶部标题栏（自适应状态栏）+ 40dp Tab（清音 / 浊音 / 拗音）+ ViewPager 三张表。
  * 右上角切换平假名 / 片假名。
  */
-public class MainActivity extends ComponentActivity {
+public class MainActivity extends Activity {
 
     private static final String STATE_KATAKANA = "show_katakana";
     private static final int PAGE_COUNT = 3;
@@ -99,7 +99,6 @@ public class MainActivity extends ComponentActivity {
         btnKatakana.setSelected(showKatakana);
     }
 
-    /** 三页都是同一个 GridView 布局，只是数据和列数不同，不值得为它建三个 Fragment */
     private final class KanaPagerAdapter extends PagerAdapter {
 
         @Override public int getCount() { return PAGE_COUNT; }

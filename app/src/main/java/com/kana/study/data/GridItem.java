@@ -14,11 +14,11 @@ public final class GridItem {
     public static final int TYPE_CELL   = 2;
 
     public final int type;
-    public final Kana label;        // header 的标题假名，跟着平 / 片假名切换
-    public final String suffix;     // "段" 或 "行"
-    public final String[] romaji;   // all / header 批量播放的罗马音
-    public final Kana kana;         // cell 的假名
-    public final boolean enabled;   // false = 现代日语中不存在的位置
+    public final Kana label;
+    public final String suffix;
+    public final String[] romaji;
+    public final Kana kana;
+    public final boolean enabled;
 
     private GridItem(int type, Kana label, String suffix, String[] romaji, Kana kana, boolean enabled) {
         this.type = type;
@@ -41,8 +41,8 @@ public final class GridItem {
         return new GridItem(TYPE_CELL, null, null, null, kana, enabled);
     }
 
-    /** header 的显示文字，如「あ段」/「ア段」 */
     public String title(boolean katakana) {
-        return (katakana ? label.katakana() : label.hiragana()) + suffix;
+        String base = katakana ? label.katakana() : label.hiragana();
+        return suffix == null ? base : base + suffix;
     }
 }

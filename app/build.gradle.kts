@@ -36,6 +36,6 @@ android {
 }
 
 dependencies {
-    implementation("androidx.activity:activity:1.13.0")
+    implementation("androidx.core:core:1.19.0")
     implementation("androidx.viewpager:viewpager:1.1.0")
 }

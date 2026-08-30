@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">日語五十音</string>
+    <string name="hiragana">平假名</string>
+    <string name="katakana">片假名</string>
+    <string name="play_all">全部播放</string>
+    <string name="splash_subtitle">即使簡單，也要努力做的很美</string>
+    <string name="splash_loading">正在準備資料…</string>
+    <string name="tab_qing">清音</string>
+    <string name="tab_zhuo">濁音</string>
+    <string name="tab_ao">拗音</string>
+</resources>
