@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.activity.ComponentActivity;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.viewpager.widget.PagerAdapter;
@@ -26,7 +26,7 @@ import java.util.List;
  * 主界面：顶部标题栏（自适应状态栏）+ 40dp Tab（清音 / 浊音 / 拗音）+ ViewPager 三张表。
  * 右上角切换平假名 / 片假名。
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends ComponentActivity {
 
     private static final String STATE_KATAKANA = "show_katakana";
     private static final int PAGE_COUNT = 3;

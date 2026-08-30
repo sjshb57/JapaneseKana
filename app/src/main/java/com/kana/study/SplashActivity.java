@@ -7,7 +7,7 @@ import android.view.View;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.activity.ComponentActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -17,7 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
  * （OnBackPressedCallback 方式，兼容 Android 14+ 的 predictive back）。
  */
 @SuppressLint("CustomSplashScreen")
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends ComponentActivity {
 
     private static final long SPLASH_DURATION_MS = 1200L;
 
