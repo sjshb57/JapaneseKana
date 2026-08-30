@@ -29,10 +29,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_21
     }
 
-    androidResources {
-        localeFilters += listOf("zh-rCN", "zh-rTW")
-    }
-
 }
 
 dependencies {

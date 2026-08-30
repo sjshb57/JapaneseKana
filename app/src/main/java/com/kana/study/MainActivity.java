@@ -145,6 +145,9 @@ public class MainActivity extends Activity {
                         : item.romaji);
             });
 
+            grid.setOnItemLongClickListener((parent, view, pos, id) ->
+                    items.get(pos).type == GridItem.TYPE_CELL && items.get(pos).enabled);
+
             container.addView(page);
             return page;
         }
