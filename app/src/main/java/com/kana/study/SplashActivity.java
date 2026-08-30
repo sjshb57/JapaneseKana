@@ -3,18 +3,15 @@ package com.kana.study;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.window.OnBackInvokedDispatcher;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-/** 启动屏：1200ms 后跳 MainActivity，期间屏蔽返回键 */
+/** 启动屏：1200ms 后跳 MainActivity */
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends Activity {
 
@@ -38,10 +35,6 @@ public class SplashActivity extends Activity {
             v.setPadding(bars.left, bars.top, bars.right, bars.bottom);
             return WindowInsetsCompat.CONSUMED;
         });
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            BackBlocker.install(this);
-        }
     }
 
     @Override
@@ -54,23 +47,5 @@ public class SplashActivity extends Activity {
     protected void onPause() {
         super.onPause();
         root.removeCallbacks(jump);
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    @SuppressLint("GestureBackNavigation")
-    public void onBackPressed() {
-    }
-
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-    private static final class BackBlocker {
-        private BackBlocker() {
-        }
-
-        static void install(Activity activity) {
-            activity.getOnBackInvokedDispatcher().registerOnBackInvokedCallback(
-                    OnBackInvokedDispatcher.PRIORITY_DEFAULT, () -> {
-                    });
-        }
     }
 }
