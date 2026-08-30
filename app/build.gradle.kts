@@ -19,7 +19,8 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro")
         }
     }
 
@@ -29,7 +30,7 @@ android {
     }
 
     androidResources {
-        localeFilters += listOf("zh", "zh-rCN", "zh-rTW")
+        localeFilters += listOf("zh-rCN", "zh-rTW")
     }
 
 }
