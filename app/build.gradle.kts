@@ -32,6 +32,6 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core:1.19.0")
+    implementation("androidx.core:core:1.19.1")
     implementation("androidx.viewpager:viewpager:1.1.0")
 }
